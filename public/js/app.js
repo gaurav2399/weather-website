@@ -2,6 +2,8 @@ const weatherForm = document.querySelector('form')
 const input =document.querySelector('input')
 const msg1 = document.querySelector('#msg-1')
 const msg2 = document.querySelector('#msg-2')
+const msg3 = document.querySelector('#msg-3')
+const msg4 = document.querySelector('#msg-4')
 
 weatherForm.addEventListener('submit',(e) => {
     msg1.textContent = 'Loading...'
@@ -20,7 +22,10 @@ weatherForm.addEventListener('submit',(e) => {
             }else{
                 msg1.textContent = data.location
                 msg2.textContent = data.forecast
-                console.log('Location is ' + data.location + ' and forecast data is ' + data.forecast)
+                msg3.textContent = 'Maximum Temperature is ' + data.maxTemp
+                msg4.textContent = 'Minimum Temperature is ' + data.minTemp
+                console.log('Location is ' + data.location + ' and forecast data is ' +
+                 data.forecast + ' high:' + data.maxTemp + ' low:' + data.minTemp)
             }
         })
     })

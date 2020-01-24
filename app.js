@@ -56,14 +56,16 @@ app.get('/weather',(req,res) => {
                 error
             })
         }
-        forecast(lattitude,longitude,(error,{rainProb,summary,temperature} = {}) => {
+        forecast(lattitude,longitude,(error,{rainProb,summary,temperature,maxTemp,minTemp} = {}) => {
             if(error)
                 return res.send({
                     error
                 })
             res.send({
                 forecast: summary + '.Temperature is ' + temperature + ', and chance of rain is ' + rainProb*100 + '%',
-                location
+                location,
+                maxTemp,
+                minTemp
             })
         })
     })
@@ -98,5 +100,5 @@ app.get('*',(req,res) => {
 })
 
 app.listen(port,() => {
-    console.log('server is running on ' + port + 'port')
+    console.log('server is running on ' + port + ' port')
 })
